@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://openbox.org/
+                file:///usr/share/openbox/menu.xsd">
+
+<menu id="root-menu" label="Openbox 3">
+  <item label="终端">
+    <action name="Execute"><execute>alacritty</execute></action>
+  </item>
+  <item label="feh 壁纸">
+    <action name="Execute"><execute>bash ~/.config/openbox/feh.sh</execute></action>
+  </item>
+  <item label="rofi启动器">
+    <action name="Execute"><execute>bash ~/.config/openbox/rofi.sh</execute></action>
+  </item>
+   <item label="thunar文件管理器">
+    <action name="Execute"><execute>thunar</execute></action>
+  </item>
+  <item label="火狐浏览器">
+    <action name="Execute"><execute>firefox-esr</execute></action>
+  </item>
+ <item label="fcitx5 输入法 (需要安装)">
+    <action name="Execute"><execute>fcitx5</execute></action>
+  </item>
+  <!-- This requires the presence of the 'obamenu' package to work -->
+  <menu id="/Debian" />
+  <separator />
+  <menu id="applications-menu" label="应用程序" execute="/usr/bin/obamenu"/>
+  <separator />
+  <item label="ObConf 配置">
+    <action name="Execute"><execute>obconf</execute></action>
+  </item>
+  <item label="重载openbox配置文件">
+    <action name="Reconfigure" />
+  </item>
+  <item label="Reconfigure">
+    <action name="Reconfigure" />
+  </item>
+  <item label="Restart">
+    <action name="Restart" />
+  </item>
+  <separator />
+  <item label="Exit">
+    <action name="Exit" />
+  </item>
+  <separator />
+</menu>
+
+</openbox_menu>
