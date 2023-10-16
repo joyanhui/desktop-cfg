@@ -15,7 +15,7 @@ exec --no-startup-id fcitx5 #输入法
 
 # exec_always 每次重载都启动
 exec_always --no-startup-id /bin/sh -c 'sleep 5 && pgrep nm-tray || nm-tray' # 延迟几秒再检测
-exec_always --no-startup-id /bin/sh -c 'sleep 5 && pgrep tint2 || tint2' # 延迟几秒再检测
+#exec_always --no-startup-id /bin/sh -c 'sleep 5 && pgrep tint2 || tint2' # 延迟几秒再检测
 exec_always --no-startup-id feh --randomize --bg-fill ~/bg/* #壁纸
 #exec --no-startup-id xfce4-panel --disable-wm-check #banner
 exec_always --no-startup-id sh .config/polybar/polybar_run.sh
@@ -61,10 +61,12 @@ bindsym $mod+Control+Down          exec --no-startup-id  pactl set-sink-volume @
 #bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 #应用程序 绑定
-bindsym Print --release exec /usr/bin/flameshot gui # 截图
+#bindsym Print --release exec /usr/bin/flameshot gui # 截图
+bindsym $mod+p --release exec /usr/bin/flameshot gui # 截图
+
 #bindsym $mod+Return exec xfce4-terminal  --drop-down #终端 下拉 
 bindsym $mod+Return exec alacritty
-bindsym $mod+e exec thunar #文件管理器  gvfs gvfs-smb sshfs thunar-volman
+bindsym $mod+e exec pcmanfm #文件管理器  gvfs gvfs-smb sshfs pcmanfm-volman
 # rofi  appfinder 等
 #bindsym $mod+d exec  xfce4-appfinder -c
 #  rofi-theme-selector 可以选择自带的样式
@@ -93,7 +95,7 @@ for_window [window_role="pop-up"]	floating enable
 for_window [window_role="task_dialog"]	floating enable
 ## 个别程序的配置 xprop|grep CLASS 加鼠标点击 可以获取窗口的class
 #for_window [class="Xfce4-terminal"]	floating enable
-for_window [class="Thunar"]				floating enable
+for_window [class="Pcmanfm"]				floating enable
 for_window [class="Xfce4-appfinder"]	floating enable
 for_window [class="QQ"]  				floating enable
 for_window [class="Xarchiver"]        	floating enable
@@ -156,8 +158,8 @@ bindsym $mod+Right focus right
 # 切换相邻工作区
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
-# alt+tab 需要用rofi
-bindsym Mod1+Tab exec --no-startup-id rofi -show window
+# win+tab 需要用rofi
+bindsym $mod+Tab exec --no-startup-id rofi -show window
 # 切换目标工作区 
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2

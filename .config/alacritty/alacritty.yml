@@ -67,10 +67,11 @@ font:
     y: 0
 
 window:
-  opacity: 0.8
+  #透明度
+  opacity: 0.92
   padding:
     x: 10
-    y: 10
+    y: 0
 scrolling:
   # 回滚缓冲区中的最大行数,指定“0”将禁用滚动。
   history: 100000

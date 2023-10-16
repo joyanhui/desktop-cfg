@@ -9,14 +9,17 @@
   <item label="终端">
     <action name="Execute"><execute>alacritty</execute></action>
   </item>
+   <item label="onekey_start">
+    <action name="Execute"><execute>bash ~/.config/openbox/onekey_start.sh</execute></action>
+  </item>
   <item label="feh 壁纸">
-    <action name="Execute"><execute>bash ~/.config/openbox/feh.sh</execute></action>
+    <action name="Execute"><execute>/usr/bin/feh --randomize --bg-fill ~/bg/* </execute></action>
   </item>
   <item label="rofi启动器">
-    <action name="Execute"><execute>bash ~/.config/openbox/rofi.sh</execute></action>
+    <action name="Execute"><execute>rofi -show drun</execute></action>
   </item>
-   <item label="thunar文件管理器">
-    <action name="Execute"><execute>thunar</execute></action>
+   <item label="pcmanfm文件管理器">
+    <action name="Execute"><execute>pcmanfm</execute></action>
   </item>
   <item label="火狐浏览器">
     <action name="Execute"><execute>firefox-esr</execute></action>
@@ -33,9 +36,6 @@
     <action name="Execute"><execute>obconf</execute></action>
   </item>
   <item label="重载openbox配置文件">
-    <action name="Reconfigure" />
-  </item>
-  <item label="Reconfigure">
     <action name="Reconfigure" />
   </item>
   <item label="Restart">
