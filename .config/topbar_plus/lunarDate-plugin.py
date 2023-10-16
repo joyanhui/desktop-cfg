@@ -63,7 +63,16 @@ if __name__ == '__main__':
     lunar_date_str = lunar_date_str.replace("农历{}年".format(current_year), "")
     # 阳历日期
     formatted_yldate = datetime.now().strftime('%Y-%m-%d')
-    print(formatted_yldate+" "+lunar_date_str)
+    # 周
+    weekdays = ['一', '二', '三', '四', '五', '六', '日']
+    # 获取星期几（0代表星期一，6代表星期日）
+    current_date = datetime.now()
+    weekday_index = current_date.weekday()
+
+    # 转换为对应的汉字星期几
+    chinese_weekday = weekdays[weekday_index]
+
+    print(formatted_yldate+" "+lunar_date_str+" 周"+chinese_weekday)
 
     #print(date1)
     #print(date1.replace("农历{}年".format(datetime.now().year), ""))
