@@ -1,6 +1,6 @@
 import requests
 
-REQ = requests.get("https://v0.yiketianqi.com/free/day?appid=XXXXXXXXX&appsecret=YYYYYYYY&unescape=1&cityid=ZZZZZZZZ")
+REQ = requests.get("https://v0.yiketianqi.com/free/day?appid=31186598&appsecret=bny9jbCV&unescape=1&cityid=101120801")
 try:
     if REQ.status_code == 200:
         wea=REQ.json()["wea"]

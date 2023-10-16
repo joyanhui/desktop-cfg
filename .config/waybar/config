@@ -39,14 +39,14 @@
     "interval": 3600,
     "on-click": "xdg-open http://www.weather.com.cn/weather15d/101120802.shtml",
     "on-click-right": "xdg-open http://www.weather.com.cn/weather15d/101120802.shtml",
-    "exec": "python3 ~/.config/polybar/weather-plugin.py",
+    "exec": "python3 ~/.config/topbar_plus/weather-plugin.py",
     "return-type": "text"
     },
      //农历和公历
     "custom/lunar": {
     "format": "{} ",
     "interval": 30,
-    "exec": "$HOME/.env/lunarDate_plugin/bin/python ~/.config/polybar/lunarDate-plugin.py",
+    "exec": "$HOME/.env/lunarDate_plugin/bin/python ~/.config/topbar_plus/lunarDate-plugin.py",
     "on-click": "xdg-open https://wannianli.tianqi.com/",
     "on-click-right": "xdg-open https://wannianli.tianqi.com/",
     "return-type": "text"
