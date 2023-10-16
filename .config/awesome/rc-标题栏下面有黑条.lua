@@ -269,6 +269,8 @@ awful.screen.connect_for_each_screen(function(s)
     vicious.cache(vicious.widgets.mem)
     vicious.register(memwidget, vicious.widgets.mem, "内存: <span foreground='#20B2AA'> $1% </span>", 13)
 
+    -- 创建 topbar
+    local topbar = awful.wibar({ position = "top", screen = s })
     -- 托盘 好像不能用用主题修改大小
     mysystray = wibox.widget.systray()
     mysystray.forced_width = 35
