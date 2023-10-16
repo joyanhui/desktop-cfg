@@ -18,7 +18,7 @@
 
 ## 依赖情况
 
-### 天气和农历 基于pythone3
+### 天气和农历 基于python3
 ```
 sudo apt-get install -y python3-requests
 sudo apt-get install -y python3.11-venv
