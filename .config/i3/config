@@ -156,9 +156,10 @@ bindsym $mod+Down  focus down
 bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 # 切换相邻工作区
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
+#bindsym $mod+Tab workspace next
+#bindsym $mod+Shift+Tab workspace prev
 # win+tab 需要用rofi
+#bindsym Mod1+Tab exec --no-startup-id rofi -show window
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 # 切换目标工作区 
 bindsym $mod+1 workspace 1

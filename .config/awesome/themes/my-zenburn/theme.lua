@@ -37,26 +37,27 @@ theme.bg_systray = theme.bg_normal
 
 
 
-
 -- 工作区颜色
 -- 当前工作区
 theme.taglist_bg_focus                          = "#ffb52a" 
 theme.taglist_fg_focus                          = "#282828"
 -- 后台工作区
-theme.taglist_bg_occupied                       = "#b6a49b"
-theme.taglist_fg_occupied                       = "#282828"
+theme.taglist_bg_occupied                       = "#555"
+theme.taglist_fg_occupied                       = "#EEE"
 -- 空的工作区
-theme.taglist_bg_empty                          = "#32302f"
-theme.taglist_fg_empty                          = "#ebdbb2"
+theme.taglist_bg_empty                          = ""
+theme.taglist_fg_empty                          = "#666"
 -- 有消息的 或者有新窗口
 theme.taglist_bg_urgent                         = theme.bg_urgent 
 theme.taglist_fg_urgent                         = theme.fg_urgent 
+-- 间隙
+theme.taglist_spacing =dpi(1)
 
 -- 任务栏
-theme.tasklist_bg_normal                        = "#32302f"
+theme.tasklist_bg_normal                        = ""
 theme.tasklist_fg_normal                        = "#ebdbb2"
-theme.tasklist_bg_focus                         = "#32302f"
-theme.tasklist_fg_focus                         = "#ebdbb2"
+theme.tasklist_bg_focus                         = "#555"
+theme.tasklist_fg_focus                         = "#FFF"
 theme.tasklist_bg_urgent                        = "#C92132"
 theme.tasklist_fg_urgent                        = "#32302f"
 
