@@ -87,22 +87,24 @@ modkey = "Mod4"
 
 --  可用布局
 awful.layout.layouts = {
-    awful.layout.suit.tile,
-    awful.layout.suit.floating,
-    --awful.layout.suit.tile.left,
-    --awful.layout.suit.tile.bottom,
-    --awful.layout.suit.tile.top,
-    --awful.layout.suit.fair,
-    --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
-    --awful.layout.suit.max,
-    --awful.layout.suit.max.fullscreen,
-    --awful.layout.suit.magnifier,
-    --awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
+    awful.layout.suit.tile, --  布局类似： 左右 口三
+    awful.layout.suit.floating, --浮动
+    awful.layout.suit.corner.nw, -- 主窗 的 右侧和下部 环绕小窗
+    awful.layout.suit.magnifier, -- 主窗口 固定在屏幕中央 其他窗口 横向平铺到背景
+    --[[
+    awful.layout.suit.tile.left,  -- 左右 三口
+    awful.layout.suit.spiral,-- 复杂布局 左侧大 右上 1/4 右下 N口 
+    awful.layout.suit.spiral.dwindle, -- 复杂布局 左侧大 右上 1/4 右下 口N 
+    awful.layout.suit.tile.bottom,  -- 上下 口 三
+    awful.layout.suit.tile.top,  -- 上下 三口
+    awful.layout.suit.fair,   -- 左右 三二 布局
+    awful.layout.suit.fair.horizontal, --上下 三二 布局
+    awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen, -- 活动窗口全屏
+    awful.layout.suit.corner.ne, - 主窗 的 左侧侧和下部 环绕小窗
+    awful.layout.suit.corner.sw, -- 主窗 的 右侧和顶部 环绕小窗
+    awful.layout.suit.corner.se, - 主窗 的 左侧侧和上部 环绕小窗
+    --]]
 }
 -- }}}
 
@@ -526,21 +528,21 @@ else
         end, {description = "确定退出 Awesome WM", group = "awesome"}),
 
         awful.key({modkey, }, "l", function () awful.tag.incmwfact(0.05) end,
-        {description = "increase master width factor", group = "layout"}),
+        {description = "increase master width factor + 主宽度", group = "layout"}),
         awful.key({modkey, }, "h", function () awful.tag.incmwfact(-0.05) end,
-        {description = "decrease master width factor", group = "layout"}),
+        {description = "decrease master width factor - 主宽度", group = "layout"}),
         awful.key({modkey, "Shift"}, "h", function () awful.tag.incnmaster(1, nil, true) end,
-        {description = "increase the number of master clients", group = "layout"}),
+        {description = "增加主区域的窗口数量", group = "layout"}),
         awful.key({modkey, "Shift"}, "l", function () awful.tag.incnmaster(-1, nil, true) end,
-        {description = "decrease the number of master clients", group = "layout"}),
+        {description = "减少主区域的窗口数量", group = "layout"}),
         awful.key({modkey, "Control"}, "h", function () awful.tag.incncol(1, nil, true) end,
-        {description = "increase the number of columns", group = "layout"}),
+        {description = "增加列的数量", group = "layout"}),
         awful.key({modkey, "Control"}, "l", function () awful.tag.incncol(-1, nil, true) end,
-        {description = "decrease the number of columns", group = "layout"}),
+        {description = "减少列的数量", group = "layout"}),
         awful.key({modkey, }, "space", function () awful.layout.inc(1) end,
-        {description = "select next", group = "layout"}),
+        {description = "select next 布局模式", group = "layout"}),
         awful.key({modkey, "Shift"}, "space", function () awful.layout.inc(-1) end,
-        {description = "select previous", group = "layout"}),
+        {description = "select previous 布局模式", group = "layout"}),
 
         awful.key({modkey, "Control"}, "n",
             function ()
@@ -551,7 +553,7 @@ else
                     "request::activate", "key.unminimize", {raise = true})
                 end
             end,
-        {description = "restore minimized", group = "client"}),
+        {description = "restore minimized 恢复最小化的", group = "client"}),
 
         -- Prompt
 
@@ -603,9 +605,26 @@ else
                 c:raise()
             end,
         {description = "toggle fullscreen全屏", group = "client"}),
-        --awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+        --[[
+        awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
         awful.key({modkey, "Shift"}, "q", function (c) c:kill() end,
         {description = "close关闭窗口", group = "client"}),
+
+        local window_title = focused_client.name or ""
+
+    -- 构建 Zenity 命令
+    local command = string.format("zenity --question --text '%s' --no-wrap --title '亲爱哒'", window_title)
+
+        --]]
+        awful.key({modkey, "Shift"}, "q", function(c) 
+            local window_title = c.name or "" --窗口标题
+            local command = string.format("zenity --question --text '确定要关闭 %s 吗？' --no-wrap --title '亲爱哒'", window_title)
+            awful.spawn.easy_async_with_shell(command, function(_, _, _, exit_code)
+                    if exit_code == 0 then
+                        c:kill()
+                    end
+            end)
+        end, {description = "确定退出 窗口", group = "awesome"}),
         awful.key({modkey, "Control"}, "space", awful.client.floating.toggle,
         {description = "toggle floating浮动", group = "client"}),
         awful.key({modkey, "Control"}, "Return", function (c) c:swap(awful.client.getmaster()) end,
@@ -618,32 +637,35 @@ else
         -- 隐藏和显示标题栏
         awful.key({modkey, "Shift"}, "b", function (c) awful.titlebar.toggle(c) end,
         {description = "Show/Hide Titlebars隐藏和显示标题栏", group = "client"}),
-
+         -- 最小化
         awful.key({modkey, }, "n",
             function (c)
                 -- The client currently has the input focus, so it cannot be
                 -- minimized, since minimized clients can't have the focus.
                 c.minimized = true
             end,
-        {description = "minimize最小化", group = "client"}),
+        {description = "minimize 最小化", group = "client"}),
+         -- 最大化
         awful.key({modkey, }, "m",
             function (c)
                 c.maximized = not c.maximized
                 c:raise()
             end,
-        {description = "(un)maximize", group = "client"}),
+        {description = "(un)maximize 最大化", group = "client"}),
+         -- 垂直最大化
         awful.key({modkey, "Control"}, "m",
             function (c)
                 c.maximized_vertical = not c.maximized_vertical
                 c:raise()
             end,
-        {description = "(un)maximize vertically", group = "client"}),
+        {description = "(un)maximize vertically 垂直最大化", group = "client"}),
+        -- 水平最大化
         awful.key({modkey, "Shift"}, "m",
             function (c)
                 c.maximized_horizontal = not c.maximized_horizontal
                 c:raise()
             end,
-        {description = "(un)maximize horizontally", group = "client"}))
+        {description = "(un)maximize horizontally 水平最大化", group = "client"}))
 
         -- Bind all key numbers to tags.
         -- Be careful: we use keycodes to make it work on any keyboard layout.
@@ -722,7 +744,7 @@ else
                             focus = awful.client.focus.filter,
                             raise = true,
                             keys = clientkeys,
-                            buttons = clientbuttons,
+                            buttons = clientbuttons, -- 窗口点击事件
                             screen = awful.screen.preferred,
                             placement = awful.placement.no_overlap + awful.placement.no_offscreen
                         }},
@@ -788,7 +810,7 @@ else
                             {rule_any = {
                                 name={"图片查看器"},
                                 class = {
-                                    "Pavucontrol", "fcitx5-config-qt", "Tint2conf"
+                                    "Pavucontrol", "fcitx5-config-qt", "Tint2conf","vlc"
                                 },
                             }, properties = {floating = true, placement = awful.placement.centered}
 

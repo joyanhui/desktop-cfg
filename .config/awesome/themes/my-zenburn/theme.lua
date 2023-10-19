@@ -75,19 +75,22 @@ theme.border_marked                             = "#CC9393"
 
 -- {{{ Titlebars 窗口标题\
 
-theme.titlebar_bg_normal                        = "#222222"
+theme.titlebar_bg_normal                        = "#444"
 theme.titlebar_fg_normal                        = "#999999"
 
-theme.titlebar_bg_focus                         = "#262626" -- 活跃窗口 标题背景
+theme.titlebar_bg_focus                         = "#111" -- 活跃窗口 标题背景
 theme.titlebar_fg_focus                         = "#FFFFFF"-- 活跃窗口 标题字体
 
 theme.titlebar_bg_focus_opacity = 0.5
 
 
 -- }}}
-
-
-
+-- {{{ 提示框背景和颜色
+theme.tooltip_bg="#000"
+theme.tooltip_fg	="#FFF"
+theme.tooltip_border_width	=dpi(1)
+theme.tooltip_border_color	="#777"
+-- }}}
 -- {{{ Mouse finder
 theme.mouse_finder_color = "#CC9393"
 -- mouse_finder_[timeout|animate_timeout|radius|factor]
@@ -132,7 +135,7 @@ theme.menu_submenu_icon      = theme.dir  .. "/submenu.png"
 
 -- }}}
 
--- {{{ Layout
+-- {{{ Layout  桌面布局图标
 theme.layout_tile       = theme.dir  .. "/layouts/tile.png"
 theme.layout_tileleft   = theme.dir  .. "/layouts/tileleft.png"
 theme.layout_tilebottom = theme.dir  .. "/layouts/tilebottom.png"
@@ -151,7 +154,7 @@ theme.layout_cornersw   = theme.dir  .. "/layouts/cornersw.png"
 theme.layout_cornerse   = theme.dir  .. "/layouts/cornerse.png"
 -- }}}
 
--- {{{ Titlebar
+-- {{{ Titlebar  窗口标题栏 按钮
 theme.titlebar_close_button_focus  = theme.dir  .. "/titlebar/close_focus.png"
 theme.titlebar_close_button_normal = theme.dir  .. "/titlebar/close_normal.png"
 
