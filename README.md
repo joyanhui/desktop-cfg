@@ -10,9 +10,10 @@
 - 同时兼容waybar polybar awesome的天气和农历
 - dunst
 - ksnip
-- rofi
-- Thunar
+- rofi 后续可能会去掉
+- Thunar 后续可能会去掉
 - PCManFM
+- tint2 plank 后续可能会去掉
 - user-dirs.local
 
 
@@ -41,7 +42,9 @@ apt install evince #pdf缩略图
 
 ### 更新记录
 - 2023 10 19 awesome 多处完善
-    - 去掉dock类的依赖
-    - 完善 tasklist 在bar位置空闲显示图标和尽可能详细的标题文字 在窗口较多的时候自动改为仅显示图标，并根据屏幕空间缩小图标大小
+    - 去掉dock类( plank 和 tint2)的依赖
+    - 完善 tasklist 
+        - 自定义模板 在bar位置空闲显示图标和尽可能详细的标题文字 在窗口较多的时候自动改为仅显示图标，并根据屏幕空间缩小图标大小
+        - 微调颜色和间隙
     - 增加 taglist 间隙为dpi(1),无窗口的空闲屏幕背景色改为透明色 微调字体颜色
 - 2023 10 18 去掉polybar自带的日期和时间
