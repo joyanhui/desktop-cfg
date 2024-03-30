@@ -1,6 +1,6 @@
+# 迁移到 nixos
+私有仓库 [https://github.com/joyanhui/nixos-config/](https://github.com/joyanhui/nixos-config/)  这里不在维护
 # desktop-cfg
-
-
 
 - i3
 - openbox
